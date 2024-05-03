@@ -7,7 +7,7 @@ import {
 } from "firebase/auth";
 import { getDownloadURL, ref } from "firebase/storage";
 import { onAuthStateChanged } from "firebase/auth";
-import Background from "../../assets/Background.jpg";
+import Background from "../../assets/Background.avif";
 import { EyeIcon, EyeSlashIcon, XCircleIcon } from "@heroicons/react/20/solid";
 import { auth, db, storage } from "../../config/firebase";
 import DotLoader from "../../components/DotLoader";

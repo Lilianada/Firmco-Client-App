@@ -5,7 +5,7 @@ import {
   getAuth,
   signInWithPhoneNumber,
 } from "firebase/auth";
-import Background from "../../assets/Background.jpg";
+import Background from "../../assets/Background.avif";
 import Logo from "../../assets/logo.png";
 import { CheckIcon, EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
 import { db } from "../../config/firebase";
