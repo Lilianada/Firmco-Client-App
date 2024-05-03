@@ -1,0 +1,47 @@
+
+  export const customModal = ({
+    showModal,
+    title,
+    text,
+    onConfirm,
+    onCancel,
+    onClose,
+    icon,
+    iconBgColor,
+    iconTextColor,
+    buttonBgColor,
+    confirmButtonText,
+    cancelButtonText,
+    cancelButtonBgColor,
+    cancelButtonTextColor,
+    confirmButtonBgColor,
+    confirmButtonTextColor,
+    showConfirmButton,
+    timer,
+    list, 
+    listItems
+}) => {
+    showModal({
+      title: title,
+      description: text,
+      confirmButtonText,
+      onConfirm,
+      onCancel,
+      onClose,
+      negativeButtonText: cancelButtonText,
+      onNegativeAction: onCancel,
+      Icon: icon || null, 
+      iconBgColor: iconBgColor ,
+      iconTextColor: iconTextColor,
+      buttonBgColor: buttonBgColor, 
+      showConfirmButton, 
+      cancelButtonText,
+      confirmButtonBgColor: confirmButtonBgColor,
+      confirmButtonTextColor: confirmButtonTextColor,
+      cancelButtonBgColor: cancelButtonBgColor ,
+      cancelButtonTextColor: cancelButtonTextColor,
+      timer: timer || 0,
+      list: list || null,
+      listItems: listItems
+    });
+};

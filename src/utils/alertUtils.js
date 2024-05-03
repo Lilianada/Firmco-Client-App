@@ -1,0 +1,30 @@
+export const customAlert = ({
+  showAlert,
+  title,
+  list,
+  listItems,
+  description,
+  textColor,
+  icon,
+  iconBgColor,
+  iconTextColor,
+  cancelButtonBgColor,
+  onClose,
+  showConfirmButton,
+  timer,
+}) => {
+  showAlert({
+    title: title,
+    description: description,
+    textColor: textColor,
+    list,
+    listItems: listItems || null,
+    Icon: icon || null,
+    iconBgColor: iconBgColor,
+    iconTextColor: iconTextColor,
+    onClose,
+    showConfirmButton,
+    cancelButtonBgColor: cancelButtonBgColor,
+    timer: timer || 0,
+  });
+};
