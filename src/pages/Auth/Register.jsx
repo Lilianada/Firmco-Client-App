@@ -397,11 +397,6 @@ export default function Register() {
     e.preventDefault();
     setIsLoading(true);
 
-    // if (!validatePassword(formData.password, formData.confirmPassword)) {
-    //   setIsLoading(false);
-    //   return;
-    // }
-
     const passwordValidationResult = validatePasswords();
     if (passwordValidationResult) {
       setErrorWithTimeout(passwordValidationResult);
@@ -722,7 +717,7 @@ export default function Register() {
                       to="/"
                       className="font-semibold text-indigo-600 hover:text-indigo-500"
                     >
-                      Sign in
+                      Sign in.
                     </Link>
                   </p>
                 </div>
