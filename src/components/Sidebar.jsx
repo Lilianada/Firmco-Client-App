@@ -75,7 +75,7 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen, navigation }) {
               {/* Sidebar */}
               <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-white px-6 pb-4 ring-1 ring-white/10">
                 <div className="flex h-16 shrink-0 items-center mt-4">
-                  <img className="h-12 w-auto" src={Logo} alt="CVS Online" />
+                  <img className="h-12 w-auto" src={Logo} alt="Firmco Online Management" />
                 </div>
                 <nav className="flex flex-1 flex-col">
                   <ul className="flex flex-1 flex-col -mx-2 space-y-1">

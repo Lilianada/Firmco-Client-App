@@ -29,7 +29,7 @@ const isKycComplete = async () => {
             Hello {user.name},
           </h2>
           <p className="mx-auto mt-6 max-w-xl text-lg leading-6 sm:leading-8 text-gray-600">
-            Welcome to CVS Online Portfolio Management. {""}
+            Welcome to Firmco Online Portfolio Management. {""}
             {kycCompletion === 0 ? (
               "Kindly begin the process of completing your KYC information."
             ) : kycCompletion < 100 ? (

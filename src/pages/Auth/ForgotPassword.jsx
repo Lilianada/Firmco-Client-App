@@ -18,7 +18,7 @@ export default function ForgotPassword() {
   const fetchWhiteLogo = async () => {
     const storageRef = ref(
       storage,
-      "gs://cvs-online.appspot.com/logos/darkLogo/"
+      "gs://fir-app-6e8f9.appspot.com/logos/darkLogo/"
     );
     try {
       const logoUrl = await getDownloadURL(storageRef);
