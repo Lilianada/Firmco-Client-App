@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   RecaptchaVerifier,
   getAuth,
   signInWithPhoneNumber,
 } from "firebase/auth";
-import Background from "../../assets/Background.avif";
 import Logo from "../../assets/logo.png";
 import { CheckIcon, EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
 import { db } from "../../config/firebase";
@@ -20,11 +19,11 @@ import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
 import { customModal } from "../../utils/modalUtils";
 import { useModal } from "../../context/ModalContext";
-import { useAlert } from "../../context/AlertContext";
 import { collection, getDocs } from "firebase/firestore";
 import PhoneVerification from "./PhoneValidation";
 import DotLoader from "../../components/DotLoader";
-import { customAlert } from "../../utils/alertUtils";
+import { ExclamationCircleIcon } from "@heroicons/react/20/solid";
+import PasswordTooltip from "../../components/PasswordTooltip";
 
 const CountrySelect = ({ value, onChange }) => {
   const [countries, setCountries] = useState([]);
@@ -55,14 +54,13 @@ const CountrySelect = ({ value, onChange }) => {
 
 const validatePassword = (pass, isStrongPolicy) => {
   if (isStrongPolicy) {
-    // Strong password policy validation
     const regex = /^(?=.*\d)(?=.*[\W_]).{8,}$/;
     return regex.test(pass);
   } else {
-    // Updated simple password policy validation
     return pass.length >= 6;
   }
 };
+
 
 export default function Register() {
   const { showModal } = useModal();
@@ -95,7 +93,6 @@ export default function Register() {
   const auth = getAuth();
 
   const { setPhoneAuthData } = useAuth();
-  const navigate = useNavigate();
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -186,16 +183,48 @@ export default function Register() {
 
   const validatePasswords = () => {
     if (formData.password !== formData.confirmPassword) {
-      return "Passwords do not match.";
+      setIsLoading(false);
+      return customModal({
+        showModal,
+        title: "Error",
+        text: "Passwords do not match.",
+        icon: ExclamationCircleIcon,
+        showConfirmButton: false,
+        timer: 3000,
+        iconBgColor: "bg-red-100",
+        iconTextColor: "text-red-600",
+        buttonBgColor: "bg-red-600",
+      });
     }
 
     if (!validatePassword(formData.password, isStrongPasswordPolicy)) {
+      setIsLoading(false);
       return isStrongPasswordPolicy
-        ? "Password must be at least 8 characters long, must contain at least one number and a special character."
-        : "Password must be at least 6 digits long.";
+        ? customModal({
+            showModal,
+            title: "Error",
+            text: "Password must be at least 8 characters long, must contain at least one number and a special character.",
+            icon: ExclamationCircleIcon,
+            showConfirmButton: false,
+            timer: 3000,
+            iconBgColor: "bg-red-100",
+            iconTextColor: "text-red-600",
+            buttonBgColor: "bg-red-600",
+          })
+        : customModal({
+            showModal,
+            title: "Error",
+            text: "Password must be at least 6 digits long.",
+            icon: ExclamationCircleIcon,
+            showConfirmButton: false,
+            timer: 3000,
+            iconBgColor: "bg-red-100",
+            iconTextColor: "text-red-600",
+            buttonBgColor: "bg-red-600",
+          });
     }
-
-    return ""; // No validation error
+    
+    return;
   };
 
   const handleChange = (e) => {
@@ -211,9 +240,18 @@ export default function Register() {
 
   const setErrorWithTimeout = (errorMessage) => {
     setError(errorMessage);
-    setTimeout(() => {
-      setError("");
-    }, 4000);
+    customModal({
+      showModal,
+      title: "Error",
+      text: errorMessage,
+      icon: ExclamationCircleIcon,
+      showConfirmButton: false,
+      timer: 3000,
+      iconBgColor: "bg-red-100",
+      iconTextColor: "text-red-600",
+      buttonBgColor: "bg-red-600",
+    });
+    return;
   };
 
   const sendUserRequest = async () => {
@@ -236,13 +274,17 @@ export default function Register() {
     if (!userRequestId) {
       throw new Error("Failed to send signup request.");
     }
-
-    setSuccessMessage("Signup successful. Please wait for admin approval.");
-
-    setTimeout(() => {
-      setSuccessMessage("");
-      navigate("/");
-    }, 3000);
+    customModal({
+      showModal,
+      title: "Error",
+      text: "Signup successful. Please wait for admin approval.",
+      icon: CheckIcon,
+      showConfirmButton: false,
+      timer: 2000,
+      iconBgColor: "bg-green-100",
+      iconTextColor: "text-green-600",
+      buttonBgColor: "bg-green-600",
+    });
     setVerificationModal(false);
   };
 
@@ -353,13 +395,17 @@ export default function Register() {
 
   const handleSignup = async (e) => {
     e.preventDefault();
-
     setIsLoading(true);
-    // Validation checks
+
+    // if (!validatePassword(formData.password, formData.confirmPassword)) {
+    //   setIsLoading(false);
+    //   return;
+    // }
+
     const passwordValidationResult = validatePasswords();
     if (passwordValidationResult) {
       setErrorWithTimeout(passwordValidationResult);
-      customAlert({
+      customModal({
         showModal,
         title: "Verification Code Sent",
         text: "Please check your phone for the verification code.",
@@ -367,7 +413,7 @@ export default function Register() {
         showConfirmButton: false,
         timer: 2000,
         iconBgColor: "bg-green-100",
-        iconTextColor: "bg-green-600",
+        iconTextColor: "text-green-600",
         buttonBgColor: "bg-green-600",
       });
       return;
@@ -409,17 +455,25 @@ export default function Register() {
     <div className="h-screen bg-blue-50">
       <div className="flex min-h-full flex-1">
         <div className="relative hidden w-0 flex-1 lg:block bg-custom-pattern sm:bg-custom-pattern bg-cover bg-center">
-          <img className="h-10 w-auto mt-6 ml-4" src={Logo} alt="Your Company" />
+          <img
+            className="h-10 w-auto mt-6 ml-4"
+            src={Logo}
+            alt="Firmco Online Portfolio Management"
+          />
         </div>
         <div className="flex flex-1 flex-col justify-center px-4 py-12 lg:py-4 sm:px-6 lg:flex-none lg:px-16 xl:px-20">
           <div className="mx-auto w-full max-w-[28rem] text-left">
-            <img className="block lg:hidden h-10 w-auto" src={Logo} alt="Your Company" />
+            <img
+              className="block lg:hidden h-10 w-auto"
+              src={Logo}
+              alt="Firmco Online Portfolio Management"
+            />
             <div>
               <h2 className="mt-4 text-2xl font-bold leading-9 tracking-tight text-gray-900">
                 Register to become a member
               </h2>
               <p className="text-sm leading-6 text-gray-500">
-              Become a user by creating an account.
+                Become a user by creating an account.
               </p>
             </div>
 
@@ -529,6 +583,7 @@ export default function Register() {
                             setFormData({ ...formData, mobilePhone: value })
                           }
                           required
+                          minLength={10}
                           className="bg-white focus:bg-blue-50 border-0 rounded-md focus:ring-0 focus:ring-inset focus:ring-indigo-50"
                         />
                       </div>
@@ -577,9 +632,10 @@ export default function Register() {
                     <div className="sm:col-span-3">
                       <label
                         htmlFor="password"
-                        className="block text-sm font-medium leading-6 text-gray-900"
+                        className="flex items-center gap-1 text-sm font-medium leading-6 text-gray-900"
                       >
                         Password
+                        <PasswordTooltip/>
                       </label>
                       <div className="relative mt-2 rounded-md shadow-sm">
                         <input
@@ -644,7 +700,7 @@ export default function Register() {
                   </div>
                   <div>
                     <button
-                    id="sign-up-button"
+                      id="sign-up-button"
                       type="submit"
                       className="mt-8 flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                     >
@@ -660,15 +716,15 @@ export default function Register() {
                   </div>
                 </form>
                 <div className="mt-4">
-                <p className="mt-2 text-sm leading-6 text-gray-500">
-                Already a member?{" "}
-                <Link
-                  to="/"
-                  className="font-semibold text-indigo-600 hover:text-indigo-500"
-                >
-                  Sign in
-                </Link>
-              </p>
+                  <p className="mt-2 text-sm leading-6 text-gray-500">
+                    Already a member?{" "}
+                    <Link
+                      to="/"
+                      className="font-semibold text-indigo-600 hover:text-indigo-500"
+                    >
+                      Sign in
+                    </Link>
+                  </p>
                 </div>
               </div>
             </div>

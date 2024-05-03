@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { Fragment, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { auth } from "../../config/firebase";
 import {
   EmailAuthProvider,
@@ -12,7 +12,6 @@ import {
   CheckIcon,
   EyeIcon,
   EyeSlashIcon,
-  QuestionMarkCircleIcon,
 } from "@heroicons/react/24/outline";
 import { useModal } from "../../context/ModalContext";
 import { useAlert } from "../../context/AlertContext";
@@ -20,20 +19,7 @@ import { customAlert } from "../../utils/alertUtils";
 import { XCircleIcon } from "@heroicons/react/20/solid";
 import { fetchPasswordPolicySetting } from "../../config/utils";
 import logo from "../../assets/logo.png";
-import { Popover, Transition } from "@headlessui/react";
-
-const strongPolicyRequirements = [
-  { name: "Minimum of 6 characters" },
-  { name: "One uppercase letter" },
-  { name: "One lowercase letter" },
-  { name: "At least one number" },
-  { name: "At least one special character (!@#$%^&*)" },
-];
-
-const requirements = [
-  { name: "No spaces allowed" },
-  { name: "Minimum of 6 characters" },
-];
+import PasswordTooltip from "../../components/PasswordTooltip";
 
 export default function ChangePassword() {
   const { showAlert, hideAlert } = useAlert();
@@ -189,51 +175,10 @@ export default function ChangePassword() {
             <h2 className="mt-6 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
               Change Password
             </h2>
-            <p className="mt-2 text-sm text-gray-700 grid place-items-center text-center">
+            <div className="mt-2 text-sm text-gray-700 grid place-items-center text-center">
               Please enter your current password and new password.
-              <Popover className="relative">
-                <Popover.Button className="inline-flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900">
-                  <span>
-                    <QuestionMarkCircleIcon
-                      className="h-5 w-5 text-indigo-600"
-                      aria-hidden="true"
-                    />
-                  </span>
-                </Popover.Button>
-                <Transition
-                  as={Fragment}
-                  enter="transition ease-out duration-200"
-                  enterFrom="opacity-0 translate-y-1"
-                  enterTo="opacity-100 translate-y-0"
-                  leave="transition ease-in duration-150"
-                  leaveFrom="opacity-100 translate-y-0"
-                  leaveTo="opacity-0 translate-y-1"
-                >
-                  <Popover.Panel className="absolute left-1/2 z-10 mt-5 flex w-screen max-w-min -translate-x-1/2 px-4">
-                  <ul className="w-56 shrink rounded-xl bg-white p-3 text-sm font-medium leading-6 text-gray-900 shadow-lg ring-1 ring-gray-900/5 text-left">
-                      { isStrongPasswordPolicy ? (
-                        strongPolicyRequirements.map((item) => (
-                          <li
-                            key={item.name}
-                            className="block hover:text-indigo-600"
-                          >
-                            {item.name}
-                          </li>
-                        ))) : (
-                      requirements.map((item) => (
-                        <li
-                          key={item.name}
-                          className="block hover:text-indigo-600"
-                        >
-                          {item.name}
-                        </li>
-                      )))
-                    }
-                    </ul>
-                  </Popover.Panel>
-                </Transition>
-              </Popover>
-            </p>
+              <PasswordTooltip />
+            </div>
           </div>
 
           <form
