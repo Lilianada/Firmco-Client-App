@@ -414,15 +414,21 @@ export default function Register() {
       return;
     }
 
-    if (formData.password !== formData.confirmPassword) {
-      setErrorWithTimeout("Passwords do not match.");
+    if (formData.mobilePhone < 10) {
+      customModal({
+        showModal,
+        title: "Error",
+        text: "Phone number incomplete.",
+        icon: ExclamationCircleIcon,
+        showConfirmButton: false,
+        timer: 2000,
+        iconBgColor: "bg-red-100",
+        iconTextColor: "text-red-600",
+        buttonBgColor: "bg-red-600",
+      });
       return;
     }
 
-    if (!validatePassword(formData.password, isStrongPasswordPolicy)) {
-      setErrorWithTimeout("Password must meet the required criteria.");
-      return;
-    }
 
     try {
       window.recaptchaVerifier = new RecaptchaVerifier(
@@ -510,6 +516,7 @@ export default function Register() {
                         value={formData.fullName}
                         onChange={handleChange}
                         placeholder="Primary Account Holder Full Name"
+                        autoComplete="full name"
                         required
                         className="bg-white focus:bg-blue-50 block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       />
@@ -550,6 +557,7 @@ export default function Register() {
                           type="email"
                           name="email"
                           placeholder="Email"
+                          autoComplete="email"
                           value={formData.email}
                           onChange={handleChange}
                           required
