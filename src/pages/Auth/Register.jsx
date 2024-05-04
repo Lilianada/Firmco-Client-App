@@ -47,6 +47,7 @@ const CountrySelect = ({ value, onChange }) => {
       options={countries}
       value={value}
       onChange={handleCountryChange}
+      required
       className="bg-white focus:bg-blue-50 block w-full placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
     />
   );
@@ -60,7 +61,6 @@ const validatePassword = (pass, isStrongPolicy) => {
     return pass.length >= 6;
   }
 };
-
 
 export default function Register() {
   const { showModal } = useModal();
@@ -101,9 +101,31 @@ export default function Register() {
     setShowConfirmPassword(!showConfirmPassword);
   };
 
+  const validateForm = () => {
+    const phoneRegex = /^\+?[1-9]\d{6,14}$/;
+    if (!phoneRegex.test(formData.mobilePhone)) {
+      setErrorWithTimeout("Please enter a valid phone number.");
+      return false;
+    }
+    
+    if (formData.password !== formData.confirmPassword) {
+      setErrorWithTimeout("Passwords do not match.");
+      return false;
+    }
+  
+    if (!validatePassword(formData.password, isStrongPasswordPolicy)) {
+      setErrorWithTimeout(isStrongPasswordPolicy ?
+        "Password must be at least 8 characters long and include both a number and a special character." :
+        "Password must be at least 6 characters long.");
+      return false;
+    }
+  
+    return true;
+  };
+
   const handleFirebaseError = (error) => {
-    let errorMessage = "";
-    switch (error) {
+    let errorMessage = "An unexpected error occurred. Please try again later.";
+    switch (error && error.code) {
       case "auth/internal-error":
         errorMessage = "Something went wrong. Please try again.";
         console.log(error);
@@ -150,14 +172,10 @@ export default function Register() {
         errorMessage = error;
         break;
     }
-    setErrorWithTimeout(errorMessage);
-  };
-
-  useEffect(() => {
-    if (error) {
-      handleFirebaseError(error);
+    if (errorMessage) {
+      setErrorWithTimeout(errorMessage);
     }
-  }, [error]);
+  };
 
   useEffect(() => {
     fetchPasswordPolicySetting()
@@ -180,52 +198,6 @@ export default function Register() {
       }
     };
   }, []);
-
-  const validatePasswords = () => {
-    if (formData.password !== formData.confirmPassword) {
-      setIsLoading(false);
-      return customModal({
-        showModal,
-        title: "Error",
-        text: "Passwords do not match.",
-        icon: ExclamationCircleIcon,
-        showConfirmButton: false,
-        timer: 3000,
-        iconBgColor: "bg-red-100",
-        iconTextColor: "text-red-600",
-        buttonBgColor: "bg-red-600",
-      });
-    }
-
-    if (!validatePassword(formData.password, isStrongPasswordPolicy)) {
-      setIsLoading(false);
-      return isStrongPasswordPolicy
-        ? customModal({
-            showModal,
-            title: "Error",
-            text: "Password must be at least 8 characters long, must contain at least one number and a special character.",
-            icon: ExclamationCircleIcon,
-            showConfirmButton: false,
-            timer: 3000,
-            iconBgColor: "bg-red-100",
-            iconTextColor: "text-red-600",
-            buttonBgColor: "bg-red-600",
-          })
-        : customModal({
-            showModal,
-            title: "Error",
-            text: "Password must be at least 6 digits long.",
-            icon: ExclamationCircleIcon,
-            showConfirmButton: false,
-            timer: 3000,
-            iconBgColor: "bg-red-100",
-            iconTextColor: "text-red-600",
-            buttonBgColor: "bg-red-600",
-          });
-    }
-    
-    return;
-  };
 
   const handleChange = (e) => {
     if (e && e.target) {
@@ -276,16 +248,17 @@ export default function Register() {
     }
     customModal({
       showModal,
-      title: "Error",
+      title: "Success",
       text: "Signup successful. Please wait for admin approval.",
       icon: CheckIcon,
       showConfirmButton: false,
-      timer: 2000,
+      timer: 4000,
       iconBgColor: "bg-green-100",
       iconTextColor: "text-green-600",
       buttonBgColor: "bg-green-600",
     });
     setVerificationModal(false);
+    resetForm();
   };
 
   const handleVerifyCode = async (e) => {
@@ -368,7 +341,7 @@ export default function Register() {
           showConfirmButton: false,
           timer: 2000,
           iconBgColor: "bg-green-100",
-          iconTextColor: "bg-green-600",
+          iconTextColor: "text-green-600",
           buttonBgColor: "bg-green-600",
         });
         setVerificationModal(true);
@@ -395,40 +368,13 @@ export default function Register() {
 
   const handleSignup = async (e) => {
     e.preventDefault();
+
+    if (!validateForm()) {
+      setIsLoading(false);
+      return;
+    }
+  
     setIsLoading(true);
-
-    const passwordValidationResult = validatePasswords();
-    if (passwordValidationResult) {
-      setErrorWithTimeout(passwordValidationResult);
-      customModal({
-        showModal,
-        title: "Verification Code Sent",
-        text: "Please check your phone for the verification code.",
-        icon: CheckIcon,
-        showConfirmButton: false,
-        timer: 2000,
-        iconBgColor: "bg-green-100",
-        iconTextColor: "text-green-600",
-        buttonBgColor: "bg-green-600",
-      });
-      return;
-    }
-
-    if (formData.mobilePhone < 10) {
-      customModal({
-        showModal,
-        title: "Error",
-        text: "Phone number incomplete.",
-        icon: ExclamationCircleIcon,
-        showConfirmButton: false,
-        timer: 2000,
-        iconBgColor: "bg-red-100",
-        iconTextColor: "text-red-600",
-        buttonBgColor: "bg-red-600",
-      });
-      return;
-    }
-
 
     try {
       window.recaptchaVerifier = new RecaptchaVerifier(
@@ -441,7 +387,6 @@ export default function Register() {
         },
         auth
       );
-
       // Send the verification code
       sendVerificationCode();
     } catch (error) {
@@ -452,6 +397,10 @@ export default function Register() {
     }
   };
 
+  const resetForm = () => {
+    setFormData(initialFormState);
+    setVerificationCode(new Array(6).fill(""));
+  }
   return (
     <div className="h-screen bg-blue-50">
       <div className="flex min-h-full flex-1">
@@ -586,7 +535,6 @@ export default function Register() {
                             setFormData({ ...formData, mobilePhone: value })
                           }
                           required
-                          minLength={10}
                           className="bg-white focus:bg-blue-50 border-0 rounded-md focus:ring-0 focus:ring-inset focus:ring-indigo-50"
                         />
                       </div>
@@ -638,7 +586,7 @@ export default function Register() {
                         className="flex items-center gap-1 text-sm font-medium leading-6 text-gray-900"
                       >
                         Password
-                        <PasswordTooltip/>
+                        <PasswordTooltip />
                       </label>
                       <div className="relative mt-2 rounded-md shadow-sm">
                         <input
