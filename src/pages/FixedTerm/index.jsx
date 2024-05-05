@@ -60,7 +60,7 @@ export default function FixedTerms() {
               >
                 <div className="flex items-center gap-x-4 border-b border-gray-900/5 bg-gray-50 p-4 flex-col">
                   <button
-                    className="block text-gray-400 hover:text-indigo-500 relative ml-auto"
+                    className="block text-gray-400 hover:text-blue-500 relative ml-auto"
                     onClick={() => handleInvest(term)}
                   >
                     <span className="sr-only">Open options</span>

@@ -38,7 +38,7 @@ export default function FifthSection({
                       name="tradeExperience"
                       value={formData.tradeExperience}
                       onChange={handleChange}
-                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
                     >
                       <option value="">Select your trading experience</option>
                       {tradingExperience.map((experience, index) => (
@@ -71,7 +71,7 @@ export default function FifthSection({
                               experience
                             )}
                             onChange={handleChange}
-                            className="form-checkbox h-4 w-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
+                            className="form-checkbox h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
                           />
                           <span className="ml-2 text-sm text-gray-700">
                             {experience}
@@ -102,7 +102,7 @@ export default function FifthSection({
                               investment
                             )}
                             onChange={handleChange}
-                            className="form-checkbox h-4 w-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
+                            className="form-checkbox h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
                           />
                           <span className="ml-2 text-sm text-gray-700">
                             {investment}
@@ -125,7 +125,7 @@ export default function FifthSection({
                       name="tradeStrategy"
                       value={formData.tradeStrategy}
                       onChange={handleChange}
-                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
                     >
                       <option value="">Select your trading strategy</option>
                       {tradingStrategy.map((strategy, index) => (
@@ -149,7 +149,7 @@ export default function FifthSection({
                       name="purposeTrading"
                       value={formData.purposeTrading}
                       onChange={handleChange}
-                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
                     >
                       <option value="">Select your purpose of trading</option>
                       {purposeOfTrading.map((purpose, index) => (
@@ -173,7 +173,7 @@ export default function FifthSection({
                       name="investAmount"
                       value={formData.investAmount}
                       onChange={handleChange}
-                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
                     >
                       <option value="">
                         Select how much you are willing to invest
@@ -215,14 +215,14 @@ export default function FifthSection({
                               <div
                                 className={`relative border p-4 flex cursor-pointer focus:outline-none rounded-lg ${
                                   checked
-                                    ? "bg-indigo-50 border-indigo-200 z-10"
+                                    ? "bg-blue-50 border-blue-200 z-10"
                                     : "border-gray-200"
                                 }`}
                               >
                                 <span
                                   className={`h-4 w-4 mt-0.5 cursor-pointer rounded-full border flex items-center justify-center ${
                                     checked
-                                      ? "bg-indigo-600 border-transparent"
+                                      ? "bg-blue-600 border-transparent"
                                       : "bg-white border-gray-300"
                                   }`}
                                   aria-hidden="true"
@@ -270,7 +270,7 @@ export default function FifthSection({
                             value={item}
                             checked={formData.familyAssessment.includes(item)}
                             onChange={handleChange}
-                            className="form-checkbox h-4 w-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
+                            className="form-checkbox h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
                           />
                           <span className="ml-2 text-sm text-gray-700">
                             {item}
@@ -291,7 +291,7 @@ export default function FifthSection({
               </button>
               <button
                 type="submit"
-                className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className="rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
               >
                 Save & Next
               </button>

@@ -309,7 +309,7 @@ export default function KycForm() {
         <div className="mt-6 mb-6" aria-hidden="true">
           <div className="overflow-hidden rounded-full bg-gray-200">
             <div
-              className="h-2 bg-indigo-600 rounded-full"
+              className="h-2 bg-blue-600 rounded-full"
               style={{ width: `${progressPercentage}%` }}
             />
           </div>
@@ -320,8 +320,8 @@ export default function KycForm() {
                 onClick={() => handleGoToSection(i)}
                 className={`w-full text-center cursor-pointer ${
                   i === currentSection
-                    ? "text-indigo-600"
-                    : "hover:text-indigo-400"
+                    ? "text-blue-600"
+                    : "hover:text-blue-400"
                 }`}
                 style={{ padding: "4px 0" }} // Adding padding to increase clickable area
               >
@@ -346,7 +346,7 @@ export default function KycForm() {
             </button>
             <button
               type="button"
-              className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              className="rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
               onClick={handleNext}
             >
               Save & Next
@@ -363,7 +363,7 @@ export default function KycForm() {
             </button>
             <button
               type="submit"
-              className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              className="rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
               onClick={handleSubmit}
               disabled={isSubmitting}
             >

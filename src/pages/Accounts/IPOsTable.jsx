@@ -102,7 +102,7 @@ export default function IPOsTable() {
                       <td className="py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
                         <button
                           onClick={() => handleInvest(item)}
-                          className="text-indigo-600 hover:text-indigo-900"
+                          className="text-blue-600 hover:text-blue-900"
                         >
                           Invest<span className="sr-only">, {item.name}</span>
                         </button>

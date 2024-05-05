@@ -104,7 +104,7 @@ export default function Document() {
                 value={fileDescription}
                 onChange={(e) => setFileDescription(e.target.value)}
                 required
-                className="mt-2 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 sm:text-sm"
+                className="mt-2 block w-full rounded-md border-gray-300 shadow-sm focus:ring-blue-500 sm:text-sm"
               />
             </div>
 
@@ -135,7 +135,7 @@ export default function Document() {
         <div className="flex items-center justify-end gap-x-6 border-t border-gray-900/10 px-4 py-4 sm:px-8">
           <button
             type="submit"
-            className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            className="rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
           >
            {isLoading ? (
               <div className="flex w-full justify-center align-middle gap-2">

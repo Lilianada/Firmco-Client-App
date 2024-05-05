@@ -12,7 +12,15 @@ http://www.apache.org/licenses/LICENSE-2.0
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import { collection, deleteDoc, doc, getDoc, getDocs, setDoc, updateDoc } from "firebase/firestore";
+import {
+  collection,
+  deleteDoc,
+  doc,
+  getDoc,
+  getDocs,
+  setDoc,
+  updateDoc,
+} from "firebase/firestore";
 import { db } from "./firebase";
 import { getAuth } from "firebase/auth";
 
@@ -72,7 +80,6 @@ export function deleteUser(uid) {
   return deleteDoc(userDoc);
 }
 
-
 //fetch user kyc
 const KYC_DOC_ID = "kycDoc";
 export async function getUserKyc(userId) {
@@ -120,14 +127,14 @@ export async function getUserKycCompletion(userId) {
   const totalFields = 24; // Total expected KYC fields
   let filledFields = 0;
 
-  Object.values(kycData).forEach(value => {
+  Object.values(kycData).forEach((value) => {
     if (value) {
       if (Array.isArray(value)) {
         // If it's an array, consider it filled if it's not empty
         if (value.length > 0) filledFields++;
-      } else if (typeof value === 'string') {
+      } else if (typeof value === "string") {
         // If it's a string, check it's not empty or 'nil'
-        if (value.trim() !== '' && value.toLowerCase() !== 'nil') {
+        if (value.trim() !== "" && value.toLowerCase() !== "nil") {
           filledFields++;
         }
       } else {

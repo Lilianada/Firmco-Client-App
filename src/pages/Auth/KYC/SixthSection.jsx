@@ -37,7 +37,7 @@ export default function SixthSection({
                           value={item}
                           checked={formData.financialStats.includes(item)}
                           onChange={handleChange}
-                          className="form-checkbox h-4 w-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
+                          className="form-checkbox h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
                         />
                         <span className="ml-2 text-sm text-gray-700">
                           {item}
@@ -61,7 +61,7 @@ export default function SixthSection({
                     name="job"
                     value={formData.job}
                     onChange={handleChange}
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
                   >
                     <option value="">Select your occupation</option>
                     {occupation.map((item, index) => (
@@ -87,7 +87,7 @@ export default function SixthSection({
                     value={formData.employerDets}
                     onChange={handleChange}
                     placeholder="Company Name, Address, Position"
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
                   />
                 </div>
               </div>
@@ -104,7 +104,7 @@ export default function SixthSection({
                     name="netIncome"
                     value={formData.netIncome}
                     onChange={handleChange}
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
                   >
                     <option value="">Select your net annual income</option>
                     {netAnnualIncome.map((item, index) => (
@@ -129,7 +129,7 @@ export default function SixthSection({
                     name="assets"
                     value={formData.assets}
                     onChange={handleChange}
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
                   >
                     <option value="">
                       Select your total cash and liquid assets

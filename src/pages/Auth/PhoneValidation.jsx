@@ -75,13 +75,13 @@ export default function PhoneVerification({
         <div className="flex justify-end p-4">
           <button
             onClick={onClose}
-            className="text-indigo-500 hover:text-indigo-700"
+            className="text-blue-500 hover:text-blue-700"
           >
             <XMarkIcon className="h-5 w-5 stroke-gray-500" />
           </button>
         </div>
         <div className="p-6">
-          <h1 className="text-xl font-semibold text-indigo-600 mb-2 text-center">
+          <h1 className="text-xl font-semibold text-blue-600 mb-2 text-center">
             Verify Code
           </h1>
           <p className="text-gray-600 mb-4 text-center">
@@ -94,7 +94,7 @@ export default function PhoneVerification({
                   key={index}
                   type="text"
                   maxLength="1"
-                  className="w-10 h-10 text-center border rounded-md mr-2 focus:outline-none focus:ring-2 focus:ring-indigo-600"
+                  className="w-10 h-10 text-center border rounded-md mr-2 focus:outline-none focus:ring-2 focus:ring-blue-600"
                   value={value}
                   onChange={(e) => onChange(e.target, index)}
                   onFocus={(e) => e.target.select()}
@@ -103,7 +103,7 @@ export default function PhoneVerification({
             </div>
             <button
               type="submit"
-              className="w-full py-2 bg-indigo-600 text-white font-semibold rounded-md transition duration-300 hover:bg-indigo-700 disabled:opacity-50"
+              className="w-full py-2 bg-blue-600 text-white font-semibold rounded-md transition duration-300 hover:bg-blue-700 disabled:opacity-50"
               disabled={isLoading}
             >
               {isLoading ? (
@@ -117,7 +117,7 @@ export default function PhoneVerification({
             {canResend ? (
               <button
                 onClick={onResend}
-                className="text-indigo-600 hover:text-indigo-700"
+                className="text-blue-600 hover:text-blue-700"
               >
                 Resend Code
               </button>

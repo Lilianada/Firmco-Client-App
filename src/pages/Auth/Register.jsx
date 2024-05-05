@@ -48,7 +48,7 @@ const CountrySelect = ({ value, onChange }) => {
       value={value}
       onChange={handleCountryChange}
       required
-      className="bg-white focus:bg-blue-50 block w-full placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+      className="bg-white focus:bg-blue-50 block w-full placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
     />
   );
 };
@@ -448,7 +448,7 @@ export default function Register() {
                       name="jointAccount"
                       checked={formData.jointAccount}
                       onChange={handleChange}
-                      className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                      className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-600"
                     />
                   </div>
 
@@ -468,7 +468,7 @@ export default function Register() {
                         placeholder="Primary Account Holder Full Name"
                         autoComplete="full name"
                         required
-                        className="bg-white focus:bg-blue-50 block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        className="bg-white focus:bg-blue-50 block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
                       />
                     </div>
                   </div>
@@ -488,7 +488,7 @@ export default function Register() {
                           placeholder="Secondary Account Holder Full Name"
                           value={formData.secondaryAccountHolder}
                           onChange={handleChange}
-                          className="bg-white focus:bg-blue-50 block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                          className="bg-white focus:bg-blue-50 block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
                         />
                       </div>
                     </div>
@@ -511,7 +511,7 @@ export default function Register() {
                           value={formData.email}
                           onChange={handleChange}
                           required
-                          className="bg-white focus:bg-blue-50 block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                          className="bg-white focus:bg-blue-50 block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
                         />
                       </div>
                     </div>
@@ -536,7 +536,7 @@ export default function Register() {
                             setFormData({ ...formData, mobilePhone: value })
                           }
                           required
-                          className="bg-white focus:bg-blue-50 border-0 rounded-md focus:ring-0 focus:ring-inset focus:ring-indigo-50"
+                          className="bg-white focus:bg-blue-50 border-0 rounded-md focus:ring-0 focus:ring-inset focus:ring-blue-50"
                         />
                       </div>
                     </div>
@@ -554,7 +554,7 @@ export default function Register() {
                         <CountrySelect
                           value={formData.country}
                           onChange={handleChange}
-                          className="bg-white focus:bg-blue-50 block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                          className="bg-white focus:bg-blue-50 block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
                         />
                       </div>
                     </div>
@@ -573,7 +573,7 @@ export default function Register() {
                           placeholder="Address"
                           value={formData.address}
                           onChange={handleChange}
-                          className="bg-white focus:bg-blue-50 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                          className="bg-white focus:bg-blue-50 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
                           autoComplete="street-address"
                         />
                       </div>
@@ -591,7 +591,7 @@ export default function Register() {
                       </label>
                       <div className="relative mt-2 rounded-md shadow-sm">
                         <input
-                          className="bg-white focus:bg-blue-50 block w-full rounded-md border-0 py-1.5 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                          className="bg-white focus:bg-blue-50 block w-full rounded-md border-0 py-1.5 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
                           type={showPassword ? "text" : "password"}
                           name="password"
                           value={formData.password}
@@ -601,7 +601,7 @@ export default function Register() {
                         <div className="cursor-pointer absolute inset-y-0 right-0 flex items-center pr-3">
                           {showPassword ? (
                             <EyeIcon
-                              className="h-4 w-4 text-indigo-300"
+                              className="h-4 w-4 text-blue-300"
                               aria-hidden="true"
                               onClick={togglePasswordVisibility}
                             />
@@ -625,7 +625,7 @@ export default function Register() {
                       </label>
                       <div className="relative mt-2 rounded-md shadow-sm">
                         <input
-                          className="bg-white focus:bg-blue-50 block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                          className="bg-white focus:bg-blue-50 block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
                           type={showConfirmPassword ? "text" : "password"}
                           name="confirmPassword"
                           value={formData.confirmPassword}
@@ -635,7 +635,7 @@ export default function Register() {
                         <div className="cursor-pointer absolute inset-y-0 right-0 flex items-center pr-3">
                           {showConfirmPassword ? (
                             <EyeIcon
-                              className="h-4 w-4 text-indigo-300"
+                              className="h-4 w-4 text-blue-300"
                               aria-hidden="true"
                               onClick={toggleConfirmPassword}
                             />
@@ -654,7 +654,7 @@ export default function Register() {
                     <button
                       id="sign-up-button"
                       type="submit"
-                      className="mt-8 flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                      className="mt-8 flex w-full justify-center rounded-md bg-blue-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
                     >
                       {isLoading ? (
                         <div className="flex w-full justify-center align-middle gap-2">
@@ -672,7 +672,7 @@ export default function Register() {
                     Already a member?{" "}
                     <Link
                       to="/"
-                      className="font-semibold text-indigo-600 hover:text-indigo-500"
+                      className="font-semibold text-blue-600 hover:text-blue-500"
                     >
                       Sign in.
                     </Link>

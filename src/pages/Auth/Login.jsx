@@ -66,12 +66,11 @@ export default function Login() {
       if (!userDoc.exists()) {
         customAlert({
           showAlert,
-          title: 'Error',
-          description: 'This user does not exist.',
+          title: "Error",
+          description: "This user does not exist.",
           icon: ExclamationCircleIcon,
-          iconBgColor: 'bg-red-100',
-          iconTextColor: 'bg-red-600',
-
+          iconBgColor: "bg-red-100",
+          iconTextColor: "bg-red-600",
         });
         setIsLoading(false);
         return;
@@ -87,7 +86,7 @@ export default function Login() {
       await updateDoc(userRef, { isLoggedIn: true });
       await addLogNotification(userRef, user);
 
-      if(result  === nameParts) {
+      if (result === nameParts) {
         navigate("/onboard");
       }
     } catch (error) {
@@ -139,7 +138,7 @@ export default function Login() {
                   </label>
                   <div className="mt-2">
                     <input
-                      className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
                       id="email"
                       name="email"
                       type="email"
@@ -160,7 +159,7 @@ export default function Login() {
                   </label>
                   <div className="relative mt-2 rounded-md shadow-sm">
                     <input
-                      className="bg-white focus:bg-blue-50 block w-full rounded-md border-0 py-1.5 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      className="bg-white focus:bg-blue-50 block w-full rounded-md border-0 py-1.5 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
                       type={showPassword ? "text" : "password"}
                       name="password"
                       value={password}
@@ -170,7 +169,7 @@ export default function Login() {
                     <div className="cursor-pointer absolute inset-y-0 right-0 flex items-center pr-3">
                       {showPassword ? (
                         <EyeIcon
-                          className="h-4 w-4 text-indigo-300"
+                          className="h-4 w-4 text-blue-300"
                           aria-hidden="true"
                           onClick={togglePasswordVisibility}
                         />
@@ -191,7 +190,7 @@ export default function Login() {
                       id="remember-me"
                       name="remember-me"
                       type="checkbox"
-                      className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                      className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-600"
                     />
                     <label
                       htmlFor="remember-me"
@@ -204,7 +203,7 @@ export default function Login() {
                   <div className="text-sm leading-6">
                     <Link
                       to="/forgot-password"
-                      className="font-semibold text-indigo-600 hover:text-indigo-500"
+                      className="font-semibold text-blue-600 hover:text-blue-500"
                     >
                       Forgot password?
                     </Link>
@@ -214,7 +213,7 @@ export default function Login() {
                 <div>
                   <button
                     type="submit"
-                    className="flex w-full justify-center align-middle rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                    className="flex w-full justify-center align-middle rounded-md bg-blue-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
                   >
                     {isLoading ? (
                       <div className="flex w-full justify-center align-middle gap-2">
@@ -234,10 +233,21 @@ export default function Login() {
                 Not a member?{" "}
                 <Link
                   to="/sign-up"
-                  className="font-semibold text-indigo-600 hover:text-indigo-500"
+                  className="font-semibold text-blue-600 hover:text-blue-500"
                 >
                   Sign Up
                 </Link>
+              </p>
+            </div>
+            <div className="text-sm leading-6 text-left">
+              <p className=" text-blue-600 hover:text-blue-500">
+                <span className="font-semibold">
+                  Demo Credentials <br />
+                </span>
+                <span className="font-medium text-blue-600">Email:</span>
+                <span className="text-gray-500"> firmcouser@demo.app</span>{" "}
+                <span className="font-medium text-blue-600">Password:</span>
+                <span className="text-gray-500"> 123456</span>
               </p>
             </div>
           </div>

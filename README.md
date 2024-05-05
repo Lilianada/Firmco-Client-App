@@ -1,4 +1,6 @@
-#  Firmco Online Portfolio Management Client App - React, Tailwind CSS & Firebase
+#  Firmco Online Portfolio Management Client App 
+
+### React, Tailwind CSS & Firebase
 
 This repository contains the code for Firmco oniline portfolio management admin app built with React on the frontend, Tailwind CSS for styling, and Firebase for authentication, database management, and stock API integration. It controls and oversees every aspect of the financial transactions and user management within the Firmco platform.
 

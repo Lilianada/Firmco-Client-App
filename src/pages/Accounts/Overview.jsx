@@ -190,7 +190,7 @@ export default function Overview() {
       icons: ArrowTrendingUpIcon,
       href: "#",
       amount: totalShares,
-      bgColor: "bg-indigo-500",
+      bgColor: "bg-blue-500",
     },
   ];
 

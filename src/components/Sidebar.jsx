@@ -89,7 +89,7 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen, navigation }) {
                           </p>
                           <p className="text-xs font-medium text-gray-500 group-hover:text-gray-700">
                             Total Account Value:
-                            <span className="text-indigo-500"> ${formatNumber(balance)}</span>
+                            <span className="text-blue-500"> ${formatNumber(balance)}</span>
                           </p>
                           <p className="text-xs italic font-medium text-gray-500 group-hover:text-gray-700"></p>
                         </div>
@@ -102,7 +102,7 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen, navigation }) {
                           to={item.to}
                           className={classNames(
                             item.current
-                              ? "border-indigo-600 bg-indigo-50 text-indigo-600"
+                              ? "border-blue-600 bg-blue-50 text-blue-600"
                               : "border-transparent text-gray-600 hover:bg-gray-50 hover:text-gray-900",
                             "group flex items-center border-l-4 px-3 py-2 text-sm font-medium"
                           )}
@@ -110,7 +110,7 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen, navigation }) {
                           <item.icon
                             className={classNames(
                               item.current
-                                ? "text-indigo-500"
+                                ? "text-blue-500"
                                 : "text-gray-400 group-hover:text-gray-500",
                               "mr-3 h-6 w-6 flex-shrink-0"
                             )}

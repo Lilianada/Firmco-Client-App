@@ -83,7 +83,7 @@ export default function ResetPasswordForm({
                 <Popover.Button className="inline-flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900">
                   <span>
                     <QuestionMarkCircleIcon
-                      className="h-5 w-5 text-indigo-600"
+                      className="h-5 w-5 text-blue-600"
                       aria-hidden="true"
                     />
                   </span>
@@ -104,7 +104,7 @@ export default function ResetPasswordForm({
                         strongPolicyRequirements.map((item) => (
                           <li
                             key={item.name}
-                            className="block hover:text-indigo-600"
+                            className="block hover:text-blue-600"
                           >
                             {item.name}
                           </li>
@@ -112,7 +112,7 @@ export default function ResetPasswordForm({
                       requirements.map((item) => (
                         <li
                           key={item.name}
-                          className="block hover:text-indigo-600"
+                          className="block hover:text-blue-600"
                         >
                           {item.name}
                         </li>
@@ -133,7 +133,7 @@ export default function ResetPasswordForm({
           >
             <div className="relative mt-2 rounded-md shadow-sm">
               <input
-                className="bg-white focus:bg-blue-50 block w-full rounded-md border-0 py-1.5 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                className="bg-white focus:bg-blue-50 block w-full rounded-md border-0 py-1.5 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
                 type={showPassword ? "text" : "password"}
                 name="password"
                 value={state.password}
@@ -151,7 +151,7 @@ export default function ResetPasswordForm({
               <div className="cursor-pointer absolute inset-y-0 right-0 flex items-center pr-3">
                 {showPassword ? (
                   <EyeIcon
-                    className="h-4 w-4 text-indigo-300"
+                    className="h-4 w-4 text-blue-300"
                     aria-hidden="true"
                     onClick={togglePasswordVisibility}
                   />
@@ -167,7 +167,7 @@ export default function ResetPasswordForm({
 
             <div className="relative mt-2 rounded-md shadow-sm">
               <input
-                className="bg-white focus:bg-blue-50 block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                className="bg-white focus:bg-blue-50 block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
                 type={showConfirmPassword ? "text" : "password"}
                 name="confirmPassword"
                 value={state.confirmPassword}
@@ -185,7 +185,7 @@ export default function ResetPasswordForm({
               <div className="cursor-pointer absolute inset-y-0 right-0 flex items-center pr-3">
                 {showConfirmPassword ? (
                   <EyeIcon
-                    className="h-4 w-4 text-indigo-300"
+                    className="h-4 w-4 text-blue-300"
                     aria-hidden="true"
                     onClick={toggleConfirmPassword}
                   />
@@ -202,7 +202,7 @@ export default function ResetPasswordForm({
             <div>
               <button
                 type="submit"
-                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-2.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className="flex w-full justify-center rounded-md bg-blue-600 px-3 py-2.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
               >
                 {state.loading ? (
                   <div className="flex w-full justify-center align-middle gap-2">

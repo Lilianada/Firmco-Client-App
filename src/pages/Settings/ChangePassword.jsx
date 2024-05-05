@@ -181,7 +181,7 @@ export default function ChangePassword() {
             <Popover.Button className="inline-flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900">
               <span>
                 <QuestionMarkCircleIcon
-                  className="h-5 w-5 text-indigo-600"
+                  className="h-5 w-5 text-blue-600"
                   aria-hidden="true"
                 />
               </span>
@@ -201,7 +201,7 @@ export default function ChangePassword() {
                     ? strongPolicyRequirements.map((item) => (
                         <li
                           key={item.name}
-                          className="block hover:text-indigo-600"
+                          className="block hover:text-blue-600"
                         >
                           {item.name}
                         </li>
@@ -209,7 +209,7 @@ export default function ChangePassword() {
                     : requirements.map((item) => (
                         <li
                           key={item.name}
-                          className="block hover:text-indigo-600"
+                          className="block hover:text-blue-600"
                         >
                           {item.name}
                         </li>
@@ -244,12 +244,12 @@ export default function ChangePassword() {
                   value={currentPassword}
                   onChange={(e) => setCurrentPassword(e.target.value)}
                   autoComplete="current-password"
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
                 />
                 <div className="cursor-pointer absolute inset-y-0 right-0 flex items-center pr-3">
                   {showPassword ? (
                     <EyeIcon
-                      className="h-5 w-5 text-indigo-400"
+                      className="h-5 w-5 text-blue-400"
                       aria-hidden="true"
                       onClick={togglePasswordVisibility}
                     />
@@ -277,12 +277,12 @@ export default function ChangePassword() {
                   name="newPassword"
                   value={newPassword}
                   onChange={(e) => setNewPassword(e.target.value)}
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
                 />
                 <div className="cursor-pointer absolute inset-y-0 right-0 flex items-center pr-3">
                   {showNewPassword ? (
                     <EyeIcon
-                      className="h-5 w-5 text-indigo-400"
+                      className="h-5 w-5 text-blue-400"
                       aria-hidden="true"
                       onClick={toggleNewPasswordVisibility}
                     />
@@ -311,7 +311,7 @@ export default function ChangePassword() {
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
                   autoComplete="new-password"
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
@@ -320,7 +320,7 @@ export default function ChangePassword() {
         <div className="flex items-center justify-end gap-x-6 border-t border-gray-900/10 px-4 py-4 sm:px-8">
           <button
             type="submit"
-            className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            className="rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
           >
             {isLoading ? (
               <div className="flex w-full justify-center align-middle gap-2">

@@ -199,7 +199,7 @@ export default function AddIpos({ setOpen, open, ipo }) {
                           name="type"
                           value={type}
                           onChange={(e) => setType(e.target.value)}
-                          className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                          className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
                         >
                           <option value="">Select Type </option>
                           <option value="invest">Invest</option>
@@ -216,7 +216,7 @@ export default function AddIpos({ setOpen, open, ipo }) {
                         name="numberOfShares"
                         placeholder="0"
                         value={numberOfShares}
-                        className="mt-3 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        className="mt-3 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
                         onChange={(e) => setNumberOfShares(e.target.value)}
                       />
                     </div>
@@ -228,13 +228,13 @@ export default function AddIpos({ setOpen, open, ipo }) {
                       <button
                         type="button"
                         onClick={() => setOpen(false)}
-                        className="inline-flex justify-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-opacity-50"
+                        className="inline-flex justify-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-opacity-50"
                       >
                         Cancel
                       </button>
                       <button
                         type="submit"
-                        className="inline-flex justify-center px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-indigo-500 focus-visible:ring-opacity-50"
+                        className="inline-flex justify-center px-4 py-2 text-sm font-medium text-white bg-blue-600 border border-transparent rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500 focus-visible:ring-opacity-50"
                       >
                         {isLoading ? "Submitting..." : "Submit"}
                       </button>

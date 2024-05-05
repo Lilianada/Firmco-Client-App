@@ -34,7 +34,7 @@ export default function PasswordTooltip() {
     <Popover.Button className="inline-flex items-center gap-x-1 text-sm font-semibold text-gray-900">
       <span>
         <QuestionMarkCircleIcon
-          className="h-4 w-4 text-indigo-600"
+          className="h-4 w-4 text-blue-600"
           aria-hidden="true"
         />
       </span>
@@ -54,7 +54,7 @@ export default function PasswordTooltip() {
             strongPolicyRequirements.map((item) => (
               <li
                 key={item.name}
-                className="block hover:text-indigo-600"
+                className="block hover:text-blue-600"
               >
                 {item.name}
               </li>
@@ -62,7 +62,7 @@ export default function PasswordTooltip() {
           requirements.map((item) => (
             <li
               key={item.name}
-              className="block hover:text-indigo-600"
+              className="block hover:text-blue-600"
             >
               {item.name}
             </li>
