@@ -5,11 +5,11 @@ import {
   setPersistence,
   signInWithEmailAndPassword,
 } from "firebase/auth";
-import { getDownloadURL, ref } from "firebase/storage";
+import logoUrl from "../../assets/logo.png";
 import { onAuthStateChanged } from "firebase/auth";
 import Background from "../../assets/Background.avif";
 import { EyeIcon, EyeSlashIcon, XCircleIcon } from "@heroicons/react/20/solid";
-import { auth, db, storage } from "../../config/firebase";
+import { auth, db } from "../../config/firebase";
 import DotLoader from "../../components/DotLoader";
 import { customAlert } from "../../utils/alertUtils";
 import { useAlert } from "../../context/AlertContext";
@@ -24,28 +24,10 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [logoUrl, setLogoUrl] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const result = useSelector((state) => state.user.name);
-
-  const fetchWhiteLogo = async () => {
-    const storageRef = ref(
-      storage,
-      "gs://fir-app-6e8f9.appspot.com/logos/darkLogo/"
-    );
-    try {
-      const logoUrl = await getDownloadURL(storageRef);
-      setLogoUrl(logoUrl);
-    } catch (error) {
-      console.error("Error fetching Logo:", error);
-    }
-  };
-
-  useEffect(() => {
-    fetchWhiteLogo();
-  }, []);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -132,7 +114,7 @@ export default function Login() {
         <div className="flex flex-1 flex-col justify-center px-4 py-12 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
           <div className="mx-auto w-full max-w-sm lg:w-96 text-left">
             <div>
-              <img className="h-12 w-auto" src={logoUrl} alt="Company Logo" />
+              <img className="h-20" src={logoUrl} alt="Company Logo" />
               <h2 className="mt-8 text-2xl font-bold leading-9 tracking-tight text-gray-900">
                 Sign in to your account
               </h2>

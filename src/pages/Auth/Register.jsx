@@ -401,6 +401,7 @@ export default function Register() {
     setFormData(initialFormState);
     setVerificationCode(new Array(6).fill(""));
   }
+  
   return (
     <div className="h-screen bg-blue-50">
       <div className="flex min-h-full flex-1">

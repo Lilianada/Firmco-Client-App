@@ -7,17 +7,17 @@ export default function WelcomePage() {
   const [kycCompletion, setKycCompletion] = useState(null);
   const user = useSelector((state) => state.user);
 
-const isKycComplete = async () => {
-  const userId = user.userId;
-  await getUserKycCompletion(userId).then(completion => {
-    if (completion !== null) {
-      setKycCompletion(completion);
-    } else {
-      setKycCompletion('none');
-    }
-  });
-}
-  useEffect( () => {
+  const isKycComplete = async () => {
+    const userId = user.userId;
+    await getUserKycCompletion(userId).then((completion) => {
+      if (completion !== null) {
+        setKycCompletion(completion);
+      } else {
+        setKycCompletion("none");
+      }
+    });
+  };
+  useEffect(() => {
     isKycComplete();
   }, []);
 
@@ -30,13 +30,13 @@ const isKycComplete = async () => {
           </h2>
           <p className="mx-auto mt-6 max-w-xl text-lg leading-6 sm:leading-8 text-gray-600">
             Welcome to Firmco Online Portfolio Management. {""}
-            {kycCompletion === 0 ? (
-              "Kindly begin the process of completing your KYC information."
-            ) : kycCompletion < 100 ? (
-              `You have completed only ${kycCompletion}% of your KYC, you have ${100 - kycCompletion}% more to go.`
-            ) : (
-              "Your KYC is fully completed. Thank you!"
-            )}
+            {kycCompletion === 0
+              ? "Kindly begin the process of completing your KYC information."
+              : kycCompletion < 100
+              ? `You have completed only ${kycCompletion}% of your KYC, you have ${
+                  100 - kycCompletion
+                }% more to go.`
+              : "Your KYC is fully completed. Thank you!"}
           </p>
           {kycCompletion !== 100 && (
             <div className="flex mt-10 items-center justify-center gap-x-6">
@@ -44,7 +44,7 @@ const isKycComplete = async () => {
                 to="/kyc-form"
                 className="rounded-md bg-gray-800 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-gray-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
               >
-                {kycCompletion === 0 ? 'Start KYC' : 'Complete KYC'}
+                {kycCompletion === 0 ? "Start KYC" : "Complete KYC"}
               </Link>
               {kycCompletion !== 0 && (
                 <Link
