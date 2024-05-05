@@ -11,6 +11,7 @@ export default function WelcomePage() {
     const userId = user.userId;
     await getUserKycCompletion(userId).then((completion) => {
       if (completion !== null) {
+        console.log(completion);
         setKycCompletion(completion);
       } else {
         setKycCompletion("none");

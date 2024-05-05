@@ -37,6 +37,7 @@ import DotLoader from "../../../components/DotLoader";
 import { useNavigate } from "react-router-dom";
 
 export default function KycForm() {
+  const userId = useSelector((state) => state.user.userId);
   const [formData, setFormData] = useState({
     eduExperience: "",
     purpose: "",
@@ -65,7 +66,6 @@ export default function KycForm() {
     familyAssessment: [],
   });
   const { showModal, hideModal } = useModal();
-  const userId = useSelector((state) => state.user.userId);
   const [currentSection, setCurrentSection] = useState(0);
   const totalSections = 6;
   const navigate = useNavigate();
@@ -165,7 +165,7 @@ export default function KycForm() {
     setIsSubmitting(true);
 
     const response = await updateUserKyc(
-      "v6pygKlYmrSOoJxkh6lpKesG2Bl2",
+      userId,
       formData
     );
 
@@ -217,7 +217,7 @@ export default function KycForm() {
       {}
     );
 
-    await updateUserKyc("v6pygKlYmrSOoJxkh6lpKesG2Bl2", filteredFormData);
+    await updateUserKyc(userId, filteredFormData);
   };
 
   const handleNext = () => {

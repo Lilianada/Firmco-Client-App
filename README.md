@@ -1,4 +1,4 @@
-#  Firmco Online Portfolio Management Admin App - React, Tailwind CSS & Firebase
+#  Firmco Online Portfolio Management Client App - React, Tailwind CSS & Firebase
 
 This repository contains the code for Firmco oniline portfolio management admin app built with React on the frontend, Tailwind CSS for styling, and Firebase for authentication, database management, and stock API integration. It controls and oversees every aspect of the financial transactions and user management within the Firmco platform.
 
@@ -22,27 +22,12 @@ This repository contains the code for Firmco oniline portfolio management admin 
     * Customizable Tailwind CSS styles for a modern look.
 
 * **Product Management:**
-    * Add, edit, and delete bonds, and fixed-term deposits. Add and edit stock shares owned by users.
+    * Buying and selling of bonds, and fixed-term deposits.
 
 * **User Management:**
-    * Add, update, and delete user profile information, bank information, kyc information etc.
-    * Perform transactions on behalf of users.
-    * View user transaction history.
-    * Send notifications to users.
-    * Chat with users in real-time.
-
-* **App Settings:**
-    * Update app metadata (title, description).
-    * Change favicon and logo.
-    * Manage visible menus and pages for users.
-    * Set password policy (weak/strong).
-    
-* **Admin Management:**
-    * Add and delete admins.
-
-* **Activity Monitoring:**
-    * Track user login/logout activity.
-    * View user transaction history through notifications.
+    * Add and update user profile information, bank information, kyc information etc.
+    * Perform transactions.
+    * Chat with admin in real-time.
 
 * **Stock API Integration:**
     * Fetch real-time stock data for users' stock shares.
@@ -96,4 +81,4 @@ This project is licensed under the MIT License (see LICENSE file for details).
 
 ###   Author
 
-Lilian Okeke - Firmco Admin App
+Lilian Okeke - Firmco Client App
