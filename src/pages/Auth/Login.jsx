@@ -15,7 +15,7 @@ import { customAlert } from "../../utils/alertUtils";
 import { useAlert } from "../../context/AlertContext";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { addLogNotification } from "../../config/utils";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setUserName, setUserId } from "../../store/actions/userActions";
 import { ExclamationCircleIcon } from "@heroicons/react/24/outline";
 
@@ -27,15 +27,14 @@ export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const result = useSelector((state) => state.user.name);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        navigate("/onboard");
-      } else {
-        return;
-      }
+      // if (user.uid) {
+      //   navigate("/onboard");
+      // } else {
+      //   return;
+      // }
     });
 
     return () => unsubscribe();
@@ -86,7 +85,7 @@ export default function Login() {
       await updateDoc(userRef, { isLoggedIn: true });
       await addLogNotification(userRef, user);
 
-      if (result === nameParts) {
+      if (user.uid) {
         navigate("/onboard");
       }
     } catch (error) {
@@ -113,13 +112,21 @@ export default function Login() {
         <div className="flex flex-1 flex-col justify-center px-4 py-12 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
           <div className="mx-auto w-full max-w-sm lg:w-96 text-left">
             <div>
-              <img className="h-20" src={logoUrl} alt="Company Logo" />
+              <img className="h-20" src={logoUrl} alt="Firmco" />
               <h2 className="mt-8 text-2xl font-bold leading-9 tracking-tight text-gray-900">
                 Sign in to your account
               </h2>
               <p className="mt-2 text-sm leading-6 text-gray-500">
                 To access your dashboard, please login with your info.
               </p>
+              <div className="text-sm leading-6 text-left">
+              <p className=" text-blue-600 hover:text-blue-500">
+                <span className="font-medium text-blue-600">Demo Email:</span>
+                <span className="text-gray-500"> firmcouser@demo.app</span> <br />
+                <span className="font-medium text-blue-600">Demo Password:</span>
+                <span className="text-gray-500"> 123456</span>
+              </p>
+            </div>
             </div>
 
             <div className="mt-10">
@@ -239,17 +246,7 @@ export default function Login() {
                 </Link>
               </p>
             </div>
-            <div className="text-sm leading-6 text-left">
-              <p className=" text-blue-600 hover:text-blue-500">
-                <span className="font-semibold">
-                  Demo Credentials <br />
-                </span>
-                <span className="font-medium text-blue-600">Email:</span>
-                <span className="text-gray-500"> firmcouser@demo.app</span>{" "}
-                <span className="font-medium text-blue-600">Password:</span>
-                <span className="text-gray-500"> 123456</span>
-              </p>
-            </div>
+           
           </div>
         </div>
         <div className="relative hidden w-0 flex-1 lg:block">

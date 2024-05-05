@@ -4,21 +4,21 @@ import { Link } from "react-router-dom";
 import { getUserKycCompletion } from "../../config/user";
 
 export default function WelcomePage() {
-  const [kycCompletion, setKycCompletion] = useState(null);
   const user = useSelector((state) => state.user);
+  const [kycCompletion, setKycCompletion] = useState(null);
+  const userId = user.userId;
 
   const isKycComplete = async () => {
-    const userId = user.userId;
-    await getUserKycCompletion(userId).then((completion) => {
-      if (completion !== null) {
-        console.log(completion);
-        setKycCompletion(completion);
-      } else {
-        setKycCompletion("none");
-      }
-    });
+    try {
+      const completion = await getUserKycCompletion(userId);
+      setKycCompletion(completion);
+      console.log(`KYC Completion: ${completion}%`);
+    } catch (error) {
+      console.error("Error fetching KYC completion:", error);
+      setKycCompletion("none");
+    }
   };
-  
+
   useEffect(() => {
     isKycComplete();
   }, []);
@@ -32,7 +32,7 @@ export default function WelcomePage() {
           </h2>
           <p className="mx-auto mt-6 max-w-xl text-lg leading-6 sm:leading-8 text-gray-600">
             Welcome to Firmco Online Portfolio Management. {""}
-            {kycCompletion === 0
+            {kycCompletion === 0 || kycCompletion === "none"
               ? "Kindly begin the process of completing your KYC information."
               : kycCompletion < 100
               ? `You have completed only ${kycCompletion}% of your KYC, you have ${
@@ -46,7 +46,9 @@ export default function WelcomePage() {
                 to="/kyc-form"
                 className="rounded-md bg-gray-800 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-gray-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
               >
-                {kycCompletion === 0 ? "Start KYC" : "Complete KYC"}
+                {kycCompletion === 0 || kycCompletion === "none"
+                  ? "Start KYC"
+                  : "Complete KYC"}
               </Link>
               {kycCompletion !== 0 && (
                 <Link

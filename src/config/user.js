@@ -115,35 +115,34 @@ export async function updateUserKyc(userId, kycData) {
   }
 }
 
-export async function getUserKycCompletion(userId) {
-  const kycRef = collection(db, USERS_COLLECTION, userId, KYC_DOC_ID);
-  const kycSnapshot = await getDocs(kycRef);
 
-  if (kycSnapshot.docs.length === 0) {
+export async function getUserKycCompletion(userId) {
+  const kycDocRef = doc(db, USERS_COLLECTION, userId, KYC_DOC_ID, 'kyc_document');
+  const kycSnapshot = await getDoc(kycDocRef);
+
+  if (!kycSnapshot.exists()) {
     return 0; // No KYC data found
   }
 
-  const kycData = kycSnapshot.docs[0].data();
-  const totalFields = 24; // Total expected KYC fields
+  const kycData = kycSnapshot.data();
+  const keys = Object.keys(kycData);
+  const totalFields = keys.length; // Dynamically count fields
   let filledFields = 0;
 
-  Object.values(kycData).forEach((value) => {
-    if (value) {
+  keys.forEach((key) => {
+    const value = kycData[key];
+    if (value !== null && value !== undefined) {
       if (Array.isArray(value)) {
-        // If it's an array, consider it filled if it's not empty
-        if (value.length > 0) filledFields++;
-      } else if (typeof value === "string") {
-        // If it's a string, check it's not empty or 'nil'
-        if (value.trim() !== "" && value.toLowerCase() !== "nil") {
-          filledFields++;
-        }
+        filledFields += value.length > 0 ? 1 : 0;
+      } else if (typeof value === 'string') {
+        filledFields += value.trim() !== "" && value.toLowerCase() !== "nil" ? 1 : 0;
       } else {
-        // For other types, consider it filled if it's not a nullish value
-        filledFields++;
+        filledFields += 1; // Consider non-string and non-array types as filled if they are not null
       }
     }
   });
 
   const completionPercentage = Math.round((filledFields / totalFields) * 100);
+  console.log(completionPercentage)
   return completionPercentage;
 }
