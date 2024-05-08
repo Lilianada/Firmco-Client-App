@@ -34,12 +34,12 @@ const navigation = [
     icon: CreditCardIcon,
     current: false,
   },
-  // {
-  //   name: "Ipos",
-  //   to: "/dashboard/ipos",
-  //   icon: CalendarIcon,
-  //   current: false,
-  // },
+  {
+    name: "Ipos",
+    to: "/dashboard/ipos",
+    icon: CalendarIcon,
+    current: false,
+  },
   {
     name: "Market Analysis",
     to: "/dashboard/market-analysis",
