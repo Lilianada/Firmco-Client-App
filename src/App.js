@@ -68,7 +68,7 @@ function App() {
               }
             />
             <Route
-              path="fixed-terms"
+              path="fixed-term-deposit"
               element={
                 <ProtectedRoute>
                   <FixedTerms />

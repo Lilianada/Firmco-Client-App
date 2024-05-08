@@ -23,6 +23,8 @@ export default function WelcomePage() {
     isKycComplete();
   }, []);
 
+  console.log(kycCompletion !== 0)
+
   return (
     <div className="bg-gray-800 sm:bg-custom-pattern bg-cover bg-center h-screen grid place-items-center">
       <div className="mx-auto max-w-7xl py-4 px-2 sm:px-6 lg:px-8">
@@ -40,8 +42,8 @@ export default function WelcomePage() {
                 }% more to go.`
               : "Your KYC is fully completed. Thank you!"}
           </p>
+          <div className="flex mt-10 items-center justify-center gap-x-6">
           {kycCompletion !== 100 && (
-            <div className="flex mt-10 items-center justify-center gap-x-6">
               <Link
                 to="/kyc-form"
                 className="rounded-md bg-gray-800 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-gray-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
@@ -50,16 +52,16 @@ export default function WelcomePage() {
                   ? "Start KYC"
                   : "Complete KYC"}
               </Link>
-              {kycCompletion !== 0 && (
-                <Link
-                  to="/dashboard"
-                  className="text-sm font-semibold leading-6 text-gray-800"
-                >
-                  Explore your account <span aria-hidden="true">→</span>
-                </Link>
-              )}
+            )}
+            {kycCompletion !== 0 && (
+              <Link
+                to="/dashboard"
+                className="text-sm font-semibold leading-6 text-gray-800"
+              >
+                Explore your account <span aria-hidden="true">→</span>
+              </Link>
+            )}
             </div>
-          )}
           <svg
             viewBox="0 0 1024 1024"
             className="absolute left-1/2 top-1/2 -z-10 h-[64rem] w-[64rem] -translate-x-1/2 [mask-image:radial-gradient(closest-side,white,transparent)]"

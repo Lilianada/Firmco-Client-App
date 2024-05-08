@@ -30,7 +30,7 @@ const navigation = [
   },
   {
     name: "Term Deposits",
-    to: "/dashboard/fixed-terms",
+    to: "/dashboard/fixed-term-deposit",
     icon: CreditCardIcon,
     current: false,
   },
