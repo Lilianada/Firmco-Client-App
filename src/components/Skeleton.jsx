@@ -18,14 +18,12 @@ const navigation = [
     name: "My Accounts",
     to: "/dashboard/my-accounts",
     icon: UserGroupIcon,
-    count: 5,
     current: false,
   },
   {
     name: "Bonds",
     to: "/dashboard/bonds",
     icon: DocumentChartBarIcon,
-    count: 3,
     current: false,
   },
   {
@@ -35,7 +33,7 @@ const navigation = [
     current: false,
   },
   {
-    name: "Ipos",
+    name: "IPOs",
     to: "/dashboard/ipos",
     icon: CalendarIcon,
     current: false,
